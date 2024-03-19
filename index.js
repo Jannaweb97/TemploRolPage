@@ -19,6 +19,7 @@ app.get('/index.css', (req, res) => {
 
 // Ruta para servir el archivo CSS del dashboard
 app.get('/dashboard.css', (req, res) => {
+    // Configura el tipo MIME del archivo CSS
     res.type('text/css');
     res.sendFile(path.join(__dirname, 'dashboard.css'));
 });
@@ -31,13 +32,13 @@ app.get('/dashboard', (req, res) => {
 
 // Ruta para la autenticación con Discord
 app.get('/auth/discord', (req, res) => {
-    // Extrae el token de acceso de la URL de consulta
+    // Extraer el token de acceso de la URL de consulta
     const accessToken = req.query.access_token;
     if (accessToken) {
-        // Redirige a la URL del dashboard en GitHub Pages
+        // Redirigir a la URL del dashboard en GitHub Pages
         res.redirect('https://jannaweb97.github.io/TemploRolPage/Inicio');
     } else {
-        // Si no hay token de acceso, redirige a la página de inicio
+        // Si no hay token de acceso, redirigir a la página de inicio
         res.redirect('/');
     }
 });
