@@ -1,0 +1,37 @@
+/* dashboard.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Tus estilos personalizados para el dashboard van aquí */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #333333, #666666);
+    color: white;
+}
+
+nav {
+    background-color: #7289da;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #5469d4;
+}
+
+.container {
+    padding: 20px;
+}

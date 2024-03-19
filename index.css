@@ -1,0 +1,37 @@
+/* index.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Tus estilos personalizados para la página de inicio van aquí */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom right, #333333, #666666);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    text-align: center;
+}
+
+.login-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #7289da;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #5469d4;
+}
