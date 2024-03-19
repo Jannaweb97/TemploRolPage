@@ -43,7 +43,6 @@ app.get('/auth/discord', (req, res) => {
     }
 });
 
-
 // Escucha en el puerto 53134
 const port = 53134;
 app.listen(port, () => {
