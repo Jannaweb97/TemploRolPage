@@ -35,7 +35,7 @@ app.get('/auth/discord', (req, res) => {
     // Extraer el token de acceso de la URL de consulta
     const accessToken = req.query.access_token;
     if (accessToken) {
-        // Redirigir a la URL del dashboard en GitHub Pages
+        // Redirigir a la URL deseada después de la autenticación
         res.redirect('https://jannaweb97.github.io/TemploRolPage/Inicio');
     } else {
         // Si no hay token de acceso, redirigir a la página de inicio
