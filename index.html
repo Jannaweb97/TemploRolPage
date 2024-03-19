@@ -8,11 +8,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <div class="login-container">
-        <a href="https://discord.com/oauth2/authorize?client_id=1219621276071497819&response_type=code&redirect_uri=https%3A%2F%2Fjannaweb97.github.io%2FTemploRolPage%2Fdashboard&scope=identify" 
+    <div id="login-container" class="login-container">
+        <a href="https://discord.com/oauth2/authorize?client_id=1219621276071497819&response_type=code&redirect_uri=https%3A%2F%2Fjannaweb97.github.io%2FTemploRolPage%2F&scope=identify" 
             class="login-button" target="_blank">
             <i class="fab fa-discord"></i> Login con Discord
         </a>
     </div>
+    <div id="dashboard-container" class="dashboard-container" style="display: none;">
+        <!-- Contenido del dashboard aquí -->
+        <div class="flex items-center justify-center h-screen bg-discord-gray text-white flex-col">
+            <div class="text-2xl">Bienvenido/a a la página principal,</div>
+            <div class="text-4xl mt-3 flex items-center font-medium">
+                <img src='' id="avatar" class="rounded-full w-12 h-12 mr-3" />
+                <div id="name"></div>
+            </div>
+            <a href="/" class="text-sm mt-5">Logout</a>
+        </div>
+    </div>
+    <script>
+        window.onload = () => {
+            const fragment = new URLSearchParams(window.location.hash.slice(1));
+            const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')];
+
+            if (accessToken) {
+                // Si hay un token de acceso, oculta el contenedor de inicio de sesión y muestra el contenedor del dashboard
+                document.getElementById('login-container').style.display = 'none';
+                document.getElementById('dashboard-container').style.display = 'block';
+
+                // Fetch de los datos del usuario y actualización del contenido del dashboard
+                fetch('https://discord.com/api/users/@me', {
+                    headers: {
+                        authorization: `${tokenType} ${accessToken}`,
+                    },
+                })
+                .then(result => result.json())
+                .then(response => {
+                    const { username, discriminator, avatar, id} = response;
+                    // Actualizar el nombre de usuario y el avatar en el dashboard
+                    document.getElementById('name').innerText = ` ${username}#${discriminator}`;
+                    document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${id}/${avatar}.jpg`;
+                })
+                .catch(console.error);
+            }
+        };
+    </script>
 </body>
 </html>
