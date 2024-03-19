@@ -19,7 +19,7 @@ app.get('/index.css', (req, res) => {
 });
 
 // Ruta para la página del dashboard y redirección después de iniciar sesión
-app.get('/dashboard', (req, res) => {
+app.get('/auth/discord', (req, res) => {
     // Extrae el token de acceso de la URL de consulta
     const accessToken = req.query.access_token;
     if (accessToken) {
