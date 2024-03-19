@@ -36,12 +36,13 @@ app.get('/auth/discord', (req, res) => {
     const accessToken = req.query.access_token;
     if (accessToken) {
         // Redirigir a la URL deseada después de la autenticación
-        res.redirect('https://jannaweb97.github.io/TemploRolPage/Inicio');
+        res.redirect(302, 'https://jannaweb97.github.io/TemploRolPage/Inicio');
     } else {
         // Si no hay token de acceso, redirigir a la página de inicio
         res.redirect('/');
     }
 });
+
 
 // Escucha en el puerto 53134
 const port = 53134;
