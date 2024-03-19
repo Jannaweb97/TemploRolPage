@@ -18,10 +18,17 @@ app.get('/index.css', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.css'));
 });
 
-// Ruta para la página del dashboard
-app.get('/auth/discord', (req, res) => {
-    // Redirige a la URL de tu página de GitHub Pages después de iniciar sesión
-    res.redirect('https://jannaweb97.github.io/TemploRolPage/');
+// Ruta para la página del dashboard y redirección después de iniciar sesión
+app.get('/dashboard', (req, res) => {
+    // Extrae el token de acceso de la URL de consulta
+    const accessToken = req.query.access_token;
+    if (accessToken) {
+        // Redirige a la URL del dashboard en GitHub Pages
+        res.redirect('https://jannaweb97.github.io/TemploRolPage/Inicio');
+    } else {
+        // Si no hay token de acceso, redirige a la página de inicio
+        res.redirect('/');
+    }
 });
 
 // Escucha en el puerto 53134
